@@ -135,7 +135,7 @@ const printMessage = () => {
     `\x1b[0m\n`,
     `\x1b[1m\x1b[32m🚀 Web-Check is up and running at http://localhost:${port} \x1b[0m\n\n`,
     `\x1b[2m\x1b[36m🛟 For documentation and support, visit the GitHub repo: ` +
-    `https://github.com/lissy93/web-check \n`,
+    `https://github.com/sethuaung/web-check \n`,
     `💖 Found Web-Check useful? Consider sponsoring us on GitHub ` +
     `to help fund maintenance & development.\x1b[0m`
   );
