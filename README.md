@@ -1,6 +1,8 @@
 # WebCheck - https://webcheck.felixent.net
 ## OSINT tool, for quickly checking a website data.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8733ea2d-df41-4022-a84c-3ea2bb449921/deploy-status)](https://app.netlify.com/sites/felixentwebcheck/deploys)
+
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
