@@ -2,7 +2,7 @@ service: web-check-api
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs21.x
   region: us-east-1
   # environment:
   #   GOOGLE_CLOUD_API_KEY: ${ssm:GOOGLE_CLOUD_API_KEY~true, ''}
@@ -243,7 +243,7 @@ custom:
     webpackConfig: 'api/_common/aws-webpack.config.js'
     includeModules: false
     packagerOptions:
-      noInstall: true 
+      noInstall: true
 
   # customDomain:
   #   domainName: example.com
