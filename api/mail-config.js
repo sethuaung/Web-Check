@@ -1,9 +1,10 @@
-const middleware = require('./_common/middleware');
+import dns from 'dns';
+import URL from 'url-parse';
+import middleware from './_common/middleware.js';
 
-const dns = require('dns').promises;
-const URL = require('url-parse');
+// TODO: Fix.
 
-const handler = async (url, event, context) => {
+const mailConfigHandler = async (url, event, context) => {
   try {
     const domain = new URL(url).hostname || new URL(url).pathname;
 
@@ -54,6 +55,11 @@ const handler = async (url, event, context) => {
     if (yahooMx.length > 0) {
       mailServices.push({ provider: 'Yahoo', value: yahooMx[0].exchange });
     }
+    // Check MX records for Mimecast
+    const mimecastMx = mxRecords.filter(record => record.exchange.includes('mimecast.com'));
+    if (mimecastMx.length > 0) {
+      mailServices.push({ provider: 'Mimecast', value: mimecastMx[0].exchange });
+    }
 
     return {
         mxRecords,
@@ -66,11 +72,11 @@ const handler = async (url, event, context) => {
     } else {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: error.message }),
+        body: { error: error.message },
       };
     }
   }
 };
 
-module.exports = middleware(handler);
-module.exports.handler = middleware(handler);
+export const handler = middleware(mailConfigHandler);
+export default handler;

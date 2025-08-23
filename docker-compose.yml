@@ -2,7 +2,7 @@ version: '3.9'
 services:
   web-check:
     container_name: Web-Check
-    image: sethuaung/web-check
+    image: sethuaung/Web-Check
     ports:
       - 3000:3000
     restart: unless-stopped

@@ -1,13 +1,18 @@
-const net = require('net');
-const middleware = require('./_common/middleware');
+import net from 'net';
+import middleware from './_common/middleware.js';
 
 // A list of commonly used ports.
-const PORTS = [
+const DEFAULT_PORTS_TO_CHECK = [
   20, 21, 22, 23, 25, 53, 80, 67, 68, 69,
   110, 119, 123, 143, 156, 161, 162, 179, 194,
   389, 443, 587, 993, 995,
   3000, 3306, 3389, 5060, 5900, 8000, 8080, 8888
 ];
+/*
+ * Checks if the env PORTS_TO_CHECK is set, if so the string is split via "," to get an array of ports to check.
+ * If the env is not set, return the default commonly used ports.
+ */
+const PORTS = process.env.PORTS_TO_CHECK ? process.env.PORTS_TO_CHECK.split(",") : DEFAULT_PORTS_TO_CHECK
 
 async function checkPort(port, domain) {
     return new Promise((resolve, reject) => {
@@ -34,7 +39,7 @@ async function checkPort(port, domain) {
     });
 }
 
-const handler = async (url, event, context) => {
+const portsHandler = async (url, event, context) => {
   const domain = url.replace(/(^\w+:|^)\/\//, '');
   
   const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -72,7 +77,11 @@ const handler = async (url, event, context) => {
   if(timeoutReached){
     return errorResponse('The function timed out before completing.');
   }
-
+  
+  // Sort openPorts and failedPorts before returning
+  openPorts.sort((a, b) => a - b);
+  failedPorts.sort((a, b) => a - b);
+  
   return { openPorts, failedPorts };
 };
 
@@ -80,5 +89,5 @@ const errorResponse = (message, statusCode = 444) => {
   return { error: message };
 };
 
-module.exports = middleware(handler);
-module.exports.handler = middleware(handler);
+export const handler = middleware(portsHandler);
+export default handler;
