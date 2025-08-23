@@ -2,7 +2,7 @@
   "name": "web-check",
   "type": "module",
   "version": "2.0.1",
-  "homepage": "https://felixentwebcheck.netlify.app",
+  "homepage": "webcheck-felixent.netlify.app",
   "scripts": {
     "start": "node server",
     "start-pm": "pm2 start server.js -i max",
