@@ -5,7 +5,7 @@ info:
     **API documentation for the [Web Check](https://github.com/sethuaung/Web-Check) backend endpoints.**<br>
     _Web Check gives you x-ray vision, revealing the configration and inner workings of any website._
     <br><br>
-    [![Website - felixentwebcheck.netlify.app](https://img.shields.io/badge/Website-webcheck.zyz-9fef00?style=flat&logo=googlecloudstorage&logoColor=white&labelColor=1c1d28)](webcheck-felixent.netlify.app/)
+    [![Website - felixentwebcheck.netlify.app](https://img.shields.io/badge/Website-webcheck.zyz-9fef00?style=flat&logo=googlecloudstorage&logoColor=white&labelColor=1c1d28)](https://webcheck-felixent.netlify.app/)
     [![DockerHub - sethuaung/Web-Check](https://img.shields.io/badge/DockerHub-Lissy93/Web_Check-1fb1f4?style=flat&logo=docker&logoColor=white&labelColor=1c1d28)](https://hub.docker.com/r/sethuaung/Web-Check)
     [![GitHub - sethuaung/Web-Check](https://img.shields.io/badge/GitHub-Lissy93/Web_Check-a832fc?style=flat&logo=github&logoColor=white&labelColor=1c1d28)](https://github.com/sethuaung/Web-Check)
     [![Sponsor - FELIXENT](https://img.shields.io/badge/Sponsor-Alicia_Sykes-f2159a?style=flat&logo=githubsponsors&logoColor=white&labelColor=1c1d28)](https://github.com/sponsors/sethuaung)
@@ -14,7 +14,7 @@ info:
   license:
     name: 'License: MIT'
     url: https://github.com/sethuaung/Web-Check/blob/master/LICENSE
-  termsOfService: webcheck-felixent.netlify.app/about#terms-info
+  termsOfService: https://webcheck-felixent.netlify.app/about#terms-info
 externalDocs:
   description: 'Source: GitHub'
   url: https://github.com/sethuaung/Web-Check
@@ -23,7 +23,7 @@ servers:
     description: Local (Development)
   - url: http://localhost:3000/api
     description: Local (Production)
-  - url: webcheck-felixent.netlify.app/api
+  - url: https://webcheck-felixent.netlify.app/api
     description: Public Demo (Vercel)
   - url: https://web-check.as93.net/api
     description: Public Demo (Netlify)

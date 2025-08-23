@@ -26,7 +26,7 @@ const deployTarget = unwrapEnvVar('PLATFORM', 'node').toLowerCase();
 const output = unwrapEnvVar('OUTPUT', 'hybrid');
 
 // The FQDN of where the site is hosted (used for sitemaps & canonical URLs)
-const site = unwrapEnvVar('SITE_URL', 'webcheck-felixent.netlify.app');
+const site = unwrapEnvVar('SITE_URL', 'https://webcheck-felixent.netlify.app');
 
 // The base URL of the site (if serving from a subdirectory)
 const base = unwrapEnvVar('BASE_URL', '/');

@@ -43,7 +43,7 @@ const ALink = styled.a`
 
 const Footer = (props: { isFixed?: boolean }): JSX.Element => {
   const licenseUrl = 'https://github.com/sethuaung/Web-Check/blob/master/LICENSE';
-  const authorUrl = 'webcheck-felixent.netlify.app/';
+  const authorUrl = 'https://webcheck-felixent.netlify.app/';
   const githubUrl = 'https://github.com/sethuaung/Web-Check';
   return (
   <StyledFooter style={props.isFixed ? {position: 'fixed'} : {}}>
