@@ -1088,7 +1088,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <!-- License + Copyright -->
 <p  align="center">
   <i>© <a href="https://sethuaung.vercel.app">Se Thu Aung</a> 2026</i><br>
-  <i>Licensed under <a href="https://gist.github.com/sethuaung/143d2ee01ccc5c052a17">MIT</a></i><br>
+  <i>Licensed under <a href="https://github.com/sethuaung/web-check/LICENSE">MIT</a></i><br>
   <a href="https://github.com/sethuaung"><img src="https://pixelflare.cc/sethuaung/images/octoface.webp?w=64" /></a><br>
   <sup>Thanks for visiting :)</sup>
 </p>
