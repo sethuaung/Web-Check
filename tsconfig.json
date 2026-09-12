@@ -1,19 +1,15 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ES2020",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      },
+      }
     ],
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2020"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -33,10 +29,8 @@
       "@layouts/*": ["layouts/*"],
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
-      "@assets/*": ["assets/*"],
+      "@assets/*": ["assets/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

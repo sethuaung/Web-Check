@@ -1,62 +1,78 @@
-# Specify the Node.js version to use
-ARG NODE_VERSION=21
 
-# Specify the Debian version to use, the default is "bullseye"
-ARG DEBIAN_VERSION=bullseye
+# Node and Debian versions
+ARG NODE_VERSION=22
+ARG DEBIAN_VERSION=bookworm
 
-# Use Node.js Docker image as the base image, with specific Node and Debian versions
-FROM node:${NODE_VERSION}-${DEBIAN_VERSION} AS build
+FROM node:${NODE_VERSION}-${DEBIAN_VERSION} AS deps
 
-# Set the container's default shell to Bash and enable some options
-SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
-
-# Install Chromium browser and Download and verify Google Chrome’s signing key
-RUN apt-get update -qq --fix-missing && \
-    apt-get -qqy install --allow-unauthenticated gnupg wget && \
-    wget --quiet --output-document=- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google-archive.gpg && \
-    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-    apt-get update -qq && \
-    apt-get -qqy --no-install-recommends install chromium traceroute python make g++ && \
-    rm -rf /var/lib/apt/lists/* 
-
-# Run the Chromium browser's version command and redirect its output to the /etc/chromium-version file
-RUN /usr/bin/chromium --no-sandbox --version > /etc/chromium-version
-
-# Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and yarn.lock to the working directory
+# Skip Chromium until the final stage
+ENV PUPPETEER_SKIP_DOWNLOAD='true' \
+    NODE_CHROMIUM_SKIP_INSTALL='true'
+
 COPY package.json yarn.lock ./
 
-# Run yarn install to install dependencies and clear yarn cache
-RUN apt-get update && \
-    yarn install --frozen-lockfile --network-timeout 100000 && \
+# Install deps, without changing lockfile
+RUN npm pkg delete devDependencies && \
+    yarn install --pure-lockfile --network-timeout 100000 && \
     rm -rf /app/node_modules/.cache
 
-# Copy all files to working directory
-COPY . .
+# Build stage, using the full image because we need the full toolchain
+FROM node:${NODE_VERSION}-${DEBIAN_VERSION} AS build
 
-# Run yarn build to build the application
-RUN yarn build --production
-
-# Final stage
-FROM node:${NODE_VERSION}-${DEBIAN_VERSION}  AS final
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 WORKDIR /app
 
+# The build needs no browser either
+ENV PUPPETEER_SKIP_DOWNLOAD='true' NODE_CHROMIUM_SKIP_INSTALL='true'
+
 COPY package.json yarn.lock ./
-COPY --from=build /app .
+
+RUN yarn install --frozen-lockfile --network-timeout 100000 && \
+    rm -rf /app/node_modules/.cache
+
+COPY . .
+
+RUN yarn build --production
+
+# Slim's fine from here, there's nothing left to compile
+FROM node:${NODE_VERSION}-${DEBIAN_VERSION}-slim AS final
+
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/api ./api
+COPY --from=build /app/public ./public
+COPY --from=build /app/server.js /app/healthcheck.js /app/package.json /app/yarn.lock ./
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends chromium traceroute && \
-    chmod 755 /usr/bin/chromium && \
-    rm -rf /var/lib/apt/lists/* /app/node_modules/.cache
+    apt-get install -y --no-install-recommends chromium traceroute tini && \
+    rm -rf /var/lib/apt/lists/*
 
-# Exposed container port, the default is 3000, which can be modified through the environment variable PORT
-EXPOSE ${PORT:-3000}
+# Fail the build here if the runtime tree can't load the compiled server
+RUN node --input-type=module -e "await import('/app/dist/server/entry.mjs');"
 
-# Set the environment variable CHROME_PATH to specify the path to the Chromium binaries
-ENV CHROME_PATH='/usr/bin/chromium'
+# Metadata only, so it can't follow PORT
+EXPOSE 3000
 
-# Define the command executed when the container starts and start the server.js of the Node.js application
-CMD ["yarn", "start"]
+# Point Chromium-using libs at the system binary, skip puppeteer's bundled download
+ENV CHROME_PATH='/usr/bin/chromium' \
+    PUPPETEER_EXECUTABLE_PATH='/usr/bin/chromium' \
+    PUPPETEER_SKIP_DOWNLOAD='true'
+
+LABEL org.opencontainers.image.title="Web-Check" \
+      org.opencontainers.image.description="All-in-one OSINT tool for analysing any website" \
+      org.opencontainers.image.url="https://web-check.xyz" \
+      org.opencontainers.image.source="https://github.com/lissy93/web-check" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.vendor="Alicia Sykes"
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD ["node", "healthcheck.js"]
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+
+CMD ["node", "server.js"]

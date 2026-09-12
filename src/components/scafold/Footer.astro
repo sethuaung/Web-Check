@@ -1,5 +1,5 @@
 ---
-const repo = 'github.com/sethuaung/Web-Check';
+const repo = 'github.com/lissy93/web-check';
 const github = `https://${repo}`;
 
 const licenseText = 'MIT';
@@ -8,8 +8,8 @@ const licenseLink = `${github}/blob/master/LICENSE`;
 const aboutLink = '/about';
 const projectName = 'Web Check';
 
-const authorName = 'FELIXENT';
-const authorLink = 'https://webcheck-felixent.netlify.app/';
+const authorName = 'Alicia Sykes';
+const authorLink = 'https://aliciasykes.com';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -27,7 +27,7 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style lang="scss">
-  @import '@styles/global.scss';
+  @use '@styles/global.scss' as *;
   footer {
     margin-top: 1rem;
     background: var(--primary);
@@ -37,7 +37,8 @@ const currentYear = new Date().getFullYear();
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    p, a {
+    p,
+    a {
       margin: 0;
       color: var(--background);
       font-size: 1rem;

@@ -1,0 +1,10 @@
+# Build artifacts and deps, regenerated inside the image
+node_modules
+dist
+.astro
+.netlify
+.vercel
+
+# Git and GitHub
+.git
+.github
