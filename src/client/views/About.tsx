@@ -148,7 +148,7 @@ const About = (): JSX.Element => {
       <AboutContainer>
         <Nav>
           <HeaderLinkContainer>
-            <a target="_blank" rel="noreferrer" href="https://github.com/lissy93/web-check">
+            <a target="_blank" rel="noreferrer" href="https://github.com/sethuaung/web-check">
               <Button>View on GitHub</Button>
             </a>
           </HeaderLinkContainer>
@@ -200,14 +200,14 @@ const About = (): JSX.Element => {
           <hr />
           <p>
             Web-Check is developed and maintained by{' '}
-            <a target="_blank" rel="noreferrer" href="https://aliciasykes.com">
-              Alicia Sykes
+            <a target="_blank" rel="noreferrer" href="https://felixent.net">
+              Felixent
             </a>
             . It's licensed under the{' '}
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://github.com/Lissy93/web-check/blob/master/LICENSE"
+              href="https://github.com/sethuaung/web-check/blob/master/LICENSE"
             >
               MIT license
             </a>
@@ -215,11 +215,11 @@ const About = (): JSX.Element => {
             settings.
             <br />
             Source code and self-hosting docs are available on{' '}
-            <a target="_blank" rel="noreferrer" href="https://github.com/lissy93/web-check">
+            <a target="_blank" rel="noreferrer" href="https://github.com/sethuaung/web-check">
               GitHub
             </a>
             . If you've found this service useful, consider{' '}
-            <a target="_blank" rel="noreferrer" href="https://github.com/sponsors/Lissy93">
+            <a target="_blank" rel="noreferrer" href="https://github.com/sponsors/sethuaung">
               sponsoring me
             </a>{' '}
             from $1/month, to help with the ongoing hosting and development costs.
@@ -322,7 +322,7 @@ const About = (): JSX.Element => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://app.netlify.com/start/deploy?repository=https://github.com/lissy93/web-check"
+            href="https://app.netlify.com/start/deploy?repository=https://github.com/sethuaung/web-check"
           >
             <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />
           </a>
@@ -349,14 +349,14 @@ const About = (): JSX.Element => {
             </a>
             <br />
             Run this command, then open <code>localhost:3000</code>
-            <pre>docker run -p 3000:3000 lissy93/web-check</pre>
+            <pre>docker run -p 3000:3000 Lissy93lissy93/web-check</pre>
           </p>
 
           <Heading as="h3" size="small" color={colors.primary}>
             Option #4 - Manual
           </Heading>
           <pre>
-            git clone https://github.com/Lissy93/web-check.git
+            git clone https://github.com/sethuaung/web-check.git
             <br />
             cd web-check # Move into the project directory
             <br />
@@ -374,8 +374,8 @@ const About = (): JSX.Element => {
           <p>
             More detailed installation and setup instructions can be found in the GitHub repository
             -{' '}
-            <a target="_blank" rel="noreferrer" href="https://github.com/lissy93/web-check#readme">
-              github.com/lissy93/web-check
+            <a target="_blank" rel="noreferrer" href="https://github.com/sethuaung/web-check#readme">
+              github.com/sethuaung/web-check
             </a>
           </p>
 
@@ -448,12 +448,12 @@ const About = (): JSX.Element => {
             License
           </Heading>
           <b>
-            <a target="_blank" rel="noreferrer" href="https://github.com/lissy93/web-check">
+            <a target="_blank" rel="noreferrer" href="https://github.com/sethuaung/web-check">
               Web-Check
             </a>{' '}
             is distributed under the MIT license, ©{' '}
-            <a target="_blank" rel="noreferrer" href="https://aliciasykes.com">
-              Alicia Sykes
+            <a target="_blank" rel="noreferrer" href="https://felixent.net">
+              FELIXENT
             </a>{' '}
             {new Date().getFullYear()}
           </b>
