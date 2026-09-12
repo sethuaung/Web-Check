@@ -65,10 +65,10 @@ ENV CHROME_PATH='/usr/bin/chromium' \
 
 LABEL org.opencontainers.image.title="Web-Check" \
       org.opencontainers.image.description="All-in-one OSINT tool for analysing any website" \
-      org.opencontainers.image.url="https://web-check.xyz" \
+      org.opencontainers.image.url="https://webcheck-felixent.netlify.app" \
       org.opencontainers.image.source="https://github.com/lissy93/web-check" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.vendor="Alicia Sykes"
+      org.opencontainers.image.vendor="FELIXENT"
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD ["node", "healthcheck.js"]

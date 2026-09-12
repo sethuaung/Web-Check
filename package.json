@@ -2,7 +2,7 @@
   "name": "web-check",
   "type": "module",
   "version": "2.2.4",
-  "homepage": "https://web-check.xyz",
+  "homepage": "https://webcheck-felixent.netlify.app",
   "engines": {
     "node": ">=22.12.0"
   },

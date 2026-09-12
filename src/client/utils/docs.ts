@@ -716,7 +716,7 @@ tester or are just interested in discovering the underlying technologies of a gi
 ];
 
 export const license = `The MIT License (MIT)
-Copyright (c) Alicia Sykes <alicia@omg.com> 
+Copyright (c) FELIXENT <alicia@omg.com> 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
 of this software and associated documentation files (the "Software"), to deal 
