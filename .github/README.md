@@ -888,7 +888,7 @@ This may be useful to see what a given website looks like, free of the constrain
 
 </details>
 
-Read more here: **[web-check.xyz/about](https://webcheck-felixent.netlify.app/about)**
+Read more here: **[web-check/about](https://webcheck-felixent.netlify.app/about)**
 
 ---
 
@@ -918,7 +918,7 @@ Run `docker run -p 3000:3000 lissy93/web-check`, then open [`localhost:3000`](ht
 You can get the Docker image from:
 
 - DockerHub: [`lissy93/web-check`](https://hub.docker.com/r/lissy93/web-check)
-- GHCR: [`ghcr.io/lissy93/web-check`](https://github.com/sethuaung/web-check/pkgs/container/web-check)
+- GHCR: [`/web-check`](https://github.com/sethuaung/web-check/pkgs/container/web-check)
 - Or build the image yourself by cloning the repo and running `docker build -t web-check .`
 
 </details>
@@ -929,7 +929,7 @@ Click the button below, to deploy to Render 👇
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sethuaung/web-check)
 
-Uses the official [`lissy93/web-check`](https://hub.docker.com/r/lissy93/web-check) image on a Standard web service. Optional enrichment API keys can be added after deploy.
+Uses the official [`/web-check`](https://hub.docker.com/r/lissy93/web-check) image on a Standard web service. Optional enrichment API keys can be added after deploy.
 
 ### Deploying - Option #5: From Source
 
@@ -1035,13 +1035,13 @@ But due to the amount of traffic that the hosted instance gets, the lambda funct
 Any help with covering the costs via GitHub Sponsorship would be much appreciated.
 It's thanks to the support of the community that this project is able to be freely available for everyone :)
 
-[![Sponsor Lissy93 on GitHub](https://img.shields.io/badge/Sponsor_on_GitHub-sethuaung-%23ff4dda?style=for-the-badge&logo=githubsponsors&logoColor=ff4dda)](https://github.com/sponsors/sethuaung)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor_on_GitHub-sethuaung-%23ff4dda?style=for-the-badge&logo=githubsponsors&logoColor=ff4dda)](https://github.com/sponsors/sethuaung)
 
 ### Contributors
 
 Credit to the following users for contributing to Web-Check
 
-[![contributors badge](https://readme-contribs.felixent.net/contributors/sethuaung/web-check?perRow=10&shape=squircle)](https://github.com/lissy93/web-check/graphs/contributors)
+[![contributors badge](https://readme-contribs.felixent.net/contributors/sethuaung/web-check?perRow=10&shape=squircle)](https://github.com/sethuaung/web-check/graphs/contributors)
 
 ### Sponsors
 
@@ -1053,7 +1053,7 @@ Huge thanks to these wonderful people, who sponsor me on GitHub, their support h
 
 ## License
 
-> _**[Lissy93/Web-Check](https://github.com/sethuaung/web-check)** is licensed under [MIT](https://github.com/sethuaung/web-check/blob/HEAD/LICENSE) © [Felixent](https://felixent.net) 2023 - 2026._<br>
+> _**[Web-Check](https://github.com/sethuaung/web-check)** is licensed under [MIT](https://github.com/sethuaung/web-check/blob/HEAD/LICENSE) © [Felixent](https://felixent.net) 2023 - 2026._<br>
 > <sup align="right">For information, see <a href="https://tldrlegal.com/license/mit-license">TLDR Legal > MIT</a></sup>
 
 <details>
